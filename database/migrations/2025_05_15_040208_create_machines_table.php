@@ -1,0 +1,39 @@
+<?php
+
+use App\Models\Brand;
+use App\Models\Maintenance;
+use App\Models\Province;
+use App\Models\Type;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+use function Laravel\Prompts\table;
+use function PHPSTORM_META\type;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('machines', function (Blueprint $table) {
+            $table->id();
+            $table->string('num_ser')->unique();
+            $table->foreignIdFor(Type::class);
+            $table->foreignIdFor(Brand::class);
+            $table->foreignIdFor(Province::class);
+            $table->foreignIdFor(Maintenance::class);
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('machines');
+    }
+};
