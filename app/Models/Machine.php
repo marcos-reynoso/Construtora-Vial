@@ -14,31 +14,35 @@ class Machine extends Model
 
     protected $fillable = [
         'num_ser',
+        'type_id',
+        'province_id',
+        'brand_id',
+        'maintenance_id',
 
     ];
     public function assigment(): BelongsTo
     {
         return $this->belongsTo(Assigment::class);
     }
-    public function types(): BelongsTo
+    public function type(): BelongsTo
     {
 
         return $this->belongsTo(Type::class);
     }
 
-    public function brands(): BelongsTo
+    public function brand(): BelongsTo
     {
 
         return $this->belongsTo(Brand::class);
     }
 
-    public function provinces(): BelongsTo
+    public function province(): BelongsTo
     {
 
         return $this->belongsTo(Province::class);
     }
 
-    public function maintenaces(): BelongsTo
+    public function maintenance(): BelongsTo
     {
 
         return $this->belongsTo(Maintenance::class);

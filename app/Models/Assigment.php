@@ -14,21 +14,25 @@ class Assigment extends Model
         'start_date',
         'end_date',
         'mileage',
+        'reason_end_id',
+        'machine_id',
+        'work_id',
+        'province_id',
     ];
-    public function machines(): HasMany
+    public function machine(): HasMany
     {
 
         return $this->hasMany(Machine::class);
     }
-    public function works(): HasMany
+    public function work(): HasMany
     {
         return $this->hasMany(Work::class);
     }
-    public function reasonends(): HasMany
+    public function reasonend(): HasMany
     {
         return $this->hasMany(ReasonEnd::class);
     }
-    public function provinces(): HasMany
+    public function province(): HasMany
     {
 
         return $this->hasMany(Province::class);

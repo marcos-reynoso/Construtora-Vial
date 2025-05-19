@@ -14,13 +14,14 @@ class Work extends Model
     protected $fillable = [
         'name',
         'start_date',
-        'end_date'
+        'end_date',
+        'province_id',
     ];
     public function assigment(): BelongsTo
     {
         return $this->belongsTo(Assigment::class);
     }
-    public function provinces(): HasMany
+    public function province(): HasMany
     {
 
         return $this->hasMany(Province::class);

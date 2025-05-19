@@ -15,7 +15,7 @@ return new class extends Migration
         Schema::create('maintenances', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            $table->integer('mileage_aplication');
+            $table->integer('mileage_application');
             $table->timestamps();
         });
     }

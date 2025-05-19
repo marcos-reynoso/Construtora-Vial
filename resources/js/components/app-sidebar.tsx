@@ -4,28 +4,55 @@ import { NavUser } from '@/components/nav-user';
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar';
 import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/react';
-import { BookOpen, Folder, LayoutGrid } from 'lucide-react';
+import {LayoutGrid ,Tractor,MapPinned,Wrench,Tag,Layers,ClipboardList,FileText } from 'lucide-react';
 import AppLogo from './app-logo';
 
 const mainNavItems: NavItem[] = [
     {
-        title: 'Dashboard',
+        title: 'Panel de Control',
         href: '/dashboard',
         icon: LayoutGrid,
     },
+    {
+        title: 'Maquinas',
+        href: '/machines',
+        icon: Tractor,
+    },
+  
+    {
+        title: 'Provincias',
+        href: '/provinces',
+        icon: MapPinned,
+    },
+    {
+        title: 'Marcas',
+        href: '/brands',
+        icon: Tag,
+    },
+    {
+        title: 'Tipos de Maquinas',
+        href: '/types',
+        icon: Layers,
+    },
+    {
+        title: 'Mantenimientos',
+        href: '/maintenances',
+        icon: Wrench,
+    },
+    {
+        title:'Asignaciones'
+        ,href:'/assignations',
+        icon: ClipboardList,
+    }, {
+        title:'Motivos de Finalizacion',
+        href:'/reasonend',
+        icon: FileText ,
+    }
+
 ];
 
 const footerNavItems: NavItem[] = [
-    {
-        title: 'Repository',
-        href: 'https://github.com/laravel/react-starter-kit',
-        icon: Folder,
-    },
-    {
-        title: 'Documentation',
-        href: 'https://laravel.com/docs/starter-kits#react',
-        icon: BookOpen,
-    },
+    
 ];
 
 export function AppSidebar() {

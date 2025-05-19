@@ -11,7 +11,7 @@ class UpdateMachineRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,11 @@ class UpdateMachineRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'num_ser' => 'required|string|max:255',
+            'type_id' => 'required|exists:types,id',
+            'province_id' => 'required|exists:provinces,id',
+            'brand_id' => 'required|exists:brands,id',
+            'maintenance_id' => 'required|exists:maintenances,id',
         ];
     }
 }

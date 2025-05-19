@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             MachineSeeder::class,
             WorkSeeder::class,
             AssigmentSeeder::class,
+            AdminUserSeeder::class,
         ]);
     }
 }
