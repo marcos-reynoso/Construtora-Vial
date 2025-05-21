@@ -16,7 +16,7 @@ class MaintenanceFactory extends Factory
     {
         return [
             'name' => $this->faker->unique()->word(),
-            'mileage_aplication' => $this->faker->numberBetween(1000, 100000),
+            'mileage_application' => $this->faker->numberBetween(1000, 100000),
         ];
     }
 }

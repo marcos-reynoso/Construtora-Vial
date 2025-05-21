@@ -4,7 +4,7 @@ import { NavUser } from '@/components/nav-user';
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar';
 import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/react';
-import {LayoutGrid ,Tractor,MapPinned,Wrench,Tag,Layers,ClipboardList,FileText } from 'lucide-react';
+import {LayoutGrid ,Tractor,Wrench,Tag,Layers,ClipboardList,FileText,Shovel } from 'lucide-react';
 import AppLogo from './app-logo';
 
 const mainNavItems: NavItem[] = [
@@ -19,11 +19,11 @@ const mainNavItems: NavItem[] = [
         icon: Tractor,
     },
   
-    {
+   /*  {
         title: 'Provincias',
         href: '/provinces',
         icon: MapPinned,
-    },
+    }, */
     {
         title: 'Marcas',
         href: '/brands',
@@ -40,8 +40,13 @@ const mainNavItems: NavItem[] = [
         icon: Wrench,
     },
     {
-        title:'Asignaciones'
-        ,href:'/assignations',
+        title: 'Obras',
+        href: '/works',
+        icon: Shovel,
+    },
+    {
+        title:'Asignaciones',
+        href:'/assignations',
         icon: ClipboardList,
     }, {
         title:'Motivos de Finalizacion',

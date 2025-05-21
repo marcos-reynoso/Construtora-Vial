@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreProvinceRequest;
 use App\Http\Requests\UpdateProvinceRequest;
 use App\Models\Province;
+use Inertia\Inertia;
 
 class ProvinceController extends Controller
 {
@@ -13,7 +14,10 @@ class ProvinceController extends Controller
      */
     public function index()
     {
-        //
+        $provinces = Province::all();
+        return inertia('Provinces/Index', [
+            'provinces' => $provinces
+        ]);
     }
 
     /**
@@ -21,7 +25,7 @@ class ProvinceController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Provinces/Create');
     }
 
     /**
@@ -29,7 +33,11 @@ class ProvinceController extends Controller
      */
     public function store(StoreProvinceRequest $request)
     {
-        //
+        Province::create($request->validated());
+        return redirect()->route('provinces.index')->with(
+            'message',
+            'Provincia Creada con Exito'
+        );
     }
 
     /**
@@ -45,7 +53,9 @@ class ProvinceController extends Controller
      */
     public function edit(Province $province)
     {
-        //
+        return Inertia::render(('Provinces/Edit'), [
+            'province' => $province
+        ]);
     }
 
     /**
@@ -53,7 +63,11 @@ class ProvinceController extends Controller
      */
     public function update(UpdateProvinceRequest $request, Province $province)
     {
-        //
+        $province->update($request->validated());
+        return redirect()->route('provinces.index')->with(
+            'message',
+            'Provincia Actualizada con Exito'
+        );
     }
 
     /**
@@ -61,6 +75,11 @@ class ProvinceController extends Controller
      */
     public function destroy(Province $province)
     {
-        //
+        $province->delete();
+
+        return redirect()->route('provinces.index')->with(
+            'message',
+            'Provincia eliminada con Exito'
+        );
     }
 }
