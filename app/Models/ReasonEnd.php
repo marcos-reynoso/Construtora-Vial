@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class ReasonEnd extends Model
 {
@@ -13,8 +14,8 @@ class ReasonEnd extends Model
     protected $fillable = [
         'name'
     ];
-    public function assigment(): BelongsTo
+    public function assigment(): HasMany
     {
-        return $this->belongsTo(Assigment::class);
+        return $this->hasMany(Assigment::class);
     }
 }

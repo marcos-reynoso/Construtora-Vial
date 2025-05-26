@@ -49,6 +49,7 @@ class MachineController extends Controller
 
         return redirect()->route('machines.index')
             ->with('message', 'Máquina registrada con éxito');
+        return redirect()->back()->with('error', 'Ocurrio un error al registrar la maquina.');
     }
 
     /**
@@ -80,11 +81,13 @@ class MachineController extends Controller
 
         return redirect()->route('machines.index')
             ->with('message', 'Máquina actualizada con éxito');
+        return redirect()->back()->with('error', 'Ocurrió un error al actualizar la máquina.');
     }
 
     public function destroy(Machine $machine)
     {
         $machine->delete();
         return redirect()->route('machines.index')->with('message', 'Máquina eliminada con éxito');
+        return redirect()->back()->with('error', 'Ocurrio un error al eliminar la maquina.');
     }
 }

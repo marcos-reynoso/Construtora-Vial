@@ -38,7 +38,7 @@ export default function Index() {
       <div className="flex h-full flex-1 flex-col gap-4 rounded-xl p-4">
         <h1 className="text-2xl font-bold text-foreground">Listado de Máquinas</h1>
     
- <Link href={route('machines.create') }><Button className='w-50'>Crear</Button></Link>
+ <Link href={route('machines.create') } className='w-50'><Button className='w-50 cursor-pointer'>Crear</Button></Link>
         <div className="rounded-xl border bg-background p-4 shadow-sm dark:border-gray-700">
            
           <Table>
@@ -62,8 +62,8 @@ export default function Index() {
                   <TableCell>{machine.maintenance?.name}</TableCell>
                        <TableCell className="text-center space-x-2">
                                        
-                                        <Link href={route('machines.edit', machine.id)}><Button className="bg-blue-700 hover:bg-blue-500">Editar</Button></Link>
-                                        <Button disabled={processing} onClick={() => handleDelete(machine.id, machine.num_ser,machine.type.name)} className="bg-red-500 hover:bg-red-700"><Trash /></Button>
+                                        <Link href={route('machines.edit', machine.id)}><Button className="bg-blue-700 hover:bg-blue-500 cursor-pointer">Editar</Button></Link>
+                                        <Button disabled={processing} onClick={() => handleDelete(machine.id, machine.num_ser,machine.type.name)} className="bg-red-500 hover:bg-red-700 cursor-pointer"><Trash /></Button>
                                     </TableCell>
                 </TableRow>
               ))}

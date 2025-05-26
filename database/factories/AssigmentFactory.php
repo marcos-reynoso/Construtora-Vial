@@ -23,10 +23,10 @@ class AssigmentFactory extends Factory
         return [
             'start_date' => $start,
             'end_date' => $end,
-            'mileage' => $this->faker->numberBetween(100, 500),
-            'reason_end_id' => ReasonEnd::factory(),
-            'machine_id' => Machine::factory(),
-            'work_id' => Work::factory(),
+            'mileage' => $this->faker->numberBetween(100, 9000),
+            'reason_end_id' => ReasonEnd::inRandomOrder()->first()->id,
+            'machine_id' => Machine::inRandomOrder()->first()->id,
+            'work_id' => Work::inRandomOrder()->first()->id,
         ];
     }
 }

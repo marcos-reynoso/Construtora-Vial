@@ -12,7 +12,7 @@ class Maintenance extends Model
     use HasFactory;
     protected $fillable = [
         'name',
-        'mileage_aplication',
+        'mileage_application',
     ];
     public function machine(): HasMany
     {

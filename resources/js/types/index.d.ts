@@ -84,7 +84,7 @@ export interface Assignment {
     id: number;
     start_date: Date;
     end_date: Date;
-    reason_end: string;
+    reasonend: { id: number; name: string };
     mileage: number;
     machine: { id: number; num_ser: string };
     work: { id: number; name: string };

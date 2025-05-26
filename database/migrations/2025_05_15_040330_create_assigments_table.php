@@ -17,9 +17,9 @@ return new class extends Migration
         Schema::create('assigments', function (Blueprint $table) {
             $table->id();
             $table->date('start_date');
-            $table->date('end_date');
+            $table->date('end_date')->nullable();
             $table->foreignIdFor(ReasonEnd::class);
-            $table->integer('mileage');
+            $table->integer('mileage')->nullable();
             $table->foreignIdFor(Machine::class);
             $table->foreignIdFor(Work::class);
             $table->timestamps();

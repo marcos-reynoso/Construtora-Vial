@@ -18,12 +18,10 @@ class Province extends Model
     {
         return $this->hasMany(Machine::class);
     }
-    public function assigment(): BelongsTo
+
+
+    public function works(): HasMany
     {
-        return $this->belongsTo(Assigment::class);
-    }
-    public function work(): BelongsTo
-    {
-        return $this->belongsTo(Work::class);
+        return $this->hasMany(Work::class);
     }
 }

@@ -20,10 +20,10 @@ class MachineFactory extends Factory
     {
         return [
             'num_ser' => $this->faker->unique()->regexify('[A-Z0-9]{10}'),
-            'type_id' => Type::factory(),
-            'brand_id' => Brand::factory(),
-            'province_id' => Province::factory(),
-            'maintenance_id' => Maintenance::factory()
+            'type_id' => Type::inRandomOrder()->first()->id,
+            'brand_id' => Brand::inRandomOrder()->first()->id,
+            'province_id' => Province::inRandomOrder()->first()->id,
+            'maintenance_id' => Maintenance::inRandomOrder()->first()->id,
         ];
     }
 }

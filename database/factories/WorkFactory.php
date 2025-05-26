@@ -20,7 +20,7 @@ class WorkFactory extends Factory
 
         return [
             'name' => $this->faker->unique()->company(),
-            'province_id' => Province::factory(),
+            'province_id' => Province::inRandomOrder()->first()->id,
             'start_date' => $start,
             'end_date' => $end,
         ];

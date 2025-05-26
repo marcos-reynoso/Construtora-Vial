@@ -13,6 +13,29 @@ class TypeSeeder extends Seeder
      */
     public function run(): void
     {
-        Type::factory(5)->create();
+        $types = [
+            'Excavadora',
+            'Retroexcavadora',
+            'Bulldozer',
+            'Cargadora',
+            'Motoniveladora',
+            'Compactadora',
+            'Grua',
+            'Hormigonera',
+            'Camión Volquete',
+            'Perforadora',
+            'Pala Mecánica',
+            'Camión de Carga',
+            'Camión de Transporte',
+            'Rodillo Compactador',
+            'Trituradora',
+            'Planta de Asfalto',
+            'Camión Cisterna',
+            'Manipulador Telescópico'
+        ];
+
+        foreach ($types as $type) {
+            Type::create(['name' => $type]);
+        }
     }
 }

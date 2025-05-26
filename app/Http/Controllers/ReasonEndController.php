@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreReasonEndRequest;
 use App\Http\Requests\UpdateReasonEndRequest;
 use App\Models\ReasonEnd;
+use Inertia\Inertia;
 
 class ReasonEndController extends Controller
 {
@@ -13,7 +14,10 @@ class ReasonEndController extends Controller
      */
     public function index()
     {
-        //
+        $reasonEnd = ReasonEnd::all();
+        return Inertia::render('ReasonEnd/Index', [
+            'reasonEnd' => $reasonEnd
+        ]);
     }
 
     /**
@@ -21,7 +25,7 @@ class ReasonEndController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('ReasonEnd/Create');
     }
 
     /**
@@ -29,7 +33,10 @@ class ReasonEndController extends Controller
      */
     public function store(StoreReasonEndRequest $request)
     {
-        //
+        $validated = $request->validated();
+        ReasonEnd::create($validated);
+        return redirect()->route('reasons-end.index')->with('message', 'Motivo Creado Correctamente');
+        return redirect()->back()->with('error', 'Error al Crear Motivo');
     }
 
     /**
@@ -45,7 +52,9 @@ class ReasonEndController extends Controller
      */
     public function edit(ReasonEnd $reasonEnd)
     {
-        //
+        return Inertia::render('ReasonEnd/Edit', [
+            'reasonEnd' => $reasonEnd
+        ]);
     }
 
     /**
@@ -53,7 +62,10 @@ class ReasonEndController extends Controller
      */
     public function update(UpdateReasonEndRequest $request, ReasonEnd $reasonEnd)
     {
-        //
+        $validated = $request->validated();
+        $reasonEnd->update($validated);
+        return redirect()->route('reasons-end.index')->with('message', 'Motivo Actualizado Correctamente');
+        return redirect()->back()->with('error', 'Error al Actualizar Motivo');
     }
 
     /**
@@ -61,6 +73,8 @@ class ReasonEndController extends Controller
      */
     public function destroy(ReasonEnd $reasonEnd)
     {
-        //
+        $reasonEnd->delete();
+        return redirect()->route('reasons-end.index')->with('message', 'Motivo Eliminado Correctamente');
+        return redirect()->back()->with('error', 'Error al Eliminar Motivo');
     }
 }

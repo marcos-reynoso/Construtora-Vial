@@ -29,10 +29,10 @@ const breadcrumbs: BreadcrumbItem[] = [
 export default function Edit ({machine, types=[], provinces=[], brands=[], maintenances=[]}: PageProps) {    
     const {data, setData, put,processing,  errors} = useForm({
 num_ser: machine.num_ser,
-  type_id: types[0].id,
-  province_id: provinces[0].id,
-  brand_id: brands[0].id,
-  maintenance_id: maintenances[0].id,
+  type_id: machine.type.id,
+  province_id: machine.province.id,
+  brand_id: machine.brand.id,
+  maintenance_id: machine.maintenance?.id,
 
     });
 
@@ -117,7 +117,7 @@ num_ser: machine.num_ser,
                 </SelectContent>
                 </Select>
                 </div>
-                <Button type="submit" disabled={processing} >Actualizar</Button>
+                <Button className='cursor-pointer bg-blue-400' type="submit" disabled={processing} >Actualizar</Button>
             </form>
             </div>
             </AppLayout>

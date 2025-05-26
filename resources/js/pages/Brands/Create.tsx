@@ -5,35 +5,35 @@ import { BreadcrumbItem } from '@/types';
 import { Head, useForm } from '@inertiajs/react'
 
 
-type TypeForm = {
+type BrandForm = {
   name: string;
 };
 
 const breadcrumbs: BreadcrumbItem[] = [
   {
-    title: 'Crear una Nueva Provincia',
-    href: '/provinces/create',
+    title: 'Crear una Nueva Marca',
+    href: '/brands/create',
   },
 ];
 
 export default function Create() {
-  const { data, setData, post, processing, errors } = useForm<TypeForm>({
+  const { data, setData, post, processing, errors } = useForm<BrandForm>({
     name: '',
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    post('/types'); 
+    post('/brands'); // o route('types.store') si usas named routes
   };
 
   return (
     <AppLayout breadcrumbs={breadcrumbs}>
-      <Head title="Nuevo Tipo de Maquina" />
+      <Head title="Nueva Marca" />
       <div className="flex h-full flex-1 flex-col gap-4 rounded-xl p-4">
-        <h1 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Registrar Tipo de Maquina</h1>
+        <h1 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Registrar Marca</h1>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <Label>Nombre del tipo</Label>
+            <Label>Nombre de la Marca</Label>
             <input
               type="text"
               value={data.name}
@@ -44,7 +44,7 @@ export default function Create() {
           </div>
 
           <Button type="submit" disabled={processing} className="w-auto hover:bg-blue-500">
-            Guardar Tipo
+            Guardar Marca
           </Button>
         </form>
       </div>

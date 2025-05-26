@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Assigment extends Model
@@ -17,24 +18,19 @@ class Assigment extends Model
         'reason_end_id',
         'machine_id',
         'work_id',
-        'province_id',
+
     ];
-    public function machine(): HasMany
+    public function machine(): BelongsTo
     {
 
-        return $this->hasMany(Machine::class);
+        return $this->belongsTo(Machine::class);
     }
-    public function work(): HasMany
+    public function work(): BelongsTo
     {
-        return $this->hasMany(Work::class);
+        return $this->belongsTo(Work::class);
     }
-    public function reasonend(): HasMany
+    public function reasonend(): BelongsTo
     {
-        return $this->hasMany(ReasonEnd::class);
-    }
-    public function province(): HasMany
-    {
-
-        return $this->hasMany(Province::class);
+        return $this->belongsTo(ReasonEnd::class, 'reason_end_id');
     }
 }

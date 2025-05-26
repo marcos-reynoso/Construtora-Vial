@@ -39,6 +39,7 @@ class TypeController extends Controller
             'message',
             'Tipo de Máquina creado con éxito.'
         );
+        return redirect()->back()->with('error', 'Error al Crear el Tipo de Maquina');
     }
 
     /**
@@ -66,6 +67,7 @@ class TypeController extends Controller
             'message',
             'Tipo de Maquina Actualizada con Exito'
         );
+        return redirect()->back()->with('error', 'Error al Actualizar  el Tipo de Maquina');
     }
 
     /**
@@ -78,5 +80,6 @@ class TypeController extends Controller
             'message',
             'Tipo de Maquina Eliminada con Exito'
         );
+        return redirect()->back()->with('error', 'Error al Eliminar el Tipo de Maquina');
     }
 }

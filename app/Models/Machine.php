@@ -20,9 +20,9 @@ class Machine extends Model
         'maintenance_id',
 
     ];
-    public function assigment(): BelongsTo
+    public function assigment(): HasMany
     {
-        return $this->belongsTo(Assigment::class);
+        return $this->hasMany(Assigment::class);
     }
     public function type(): BelongsTo
     {

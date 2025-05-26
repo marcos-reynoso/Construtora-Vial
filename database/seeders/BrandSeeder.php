@@ -13,6 +13,27 @@ class BrandSeeder extends Seeder
      */
     public function run(): void
     {
-        Brand::factory(5)->create();
+        $brands = [
+            'Caterpillar',
+            'Komatsu',
+            'John Deere',
+            'Hitachi',
+            'Volvo',
+            'Liebherr',
+            'Hyundai',
+            'Case',
+            'JCB',
+            'Bobcat',
+            'Doosan',
+            'Kubota',
+            'Terex',
+            'New Holland',
+            'Sany',
+            'XCMG'
+        ];
+
+        foreach ($brands as $brand) {
+            Brand::create(['name' => $brand]);
+        }
     }
 }

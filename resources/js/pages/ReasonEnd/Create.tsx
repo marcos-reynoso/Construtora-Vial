@@ -5,35 +5,35 @@ import { BreadcrumbItem } from '@/types';
 import { Head, useForm } from '@inertiajs/react'
 
 
-type TypeForm = {
+type ReasonEndForm = {
   name: string;
 };
 
 const breadcrumbs: BreadcrumbItem[] = [
   {
-    title: 'Crear una Nueva Provincia',
-    href: '/provinces/create',
+    title: 'Crear una Nueo Motivo ',
+    href: '/reasonend/create',
   },
 ];
 
 export default function Create() {
-  const { data, setData, post, processing, errors } = useForm<TypeForm>({
+  const { data, setData, post, processing, errors } = useForm<ReasonEndForm>({
     name: '',
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    post('/types'); 
+    post('/reasonend'); 
   };
 
   return (
     <AppLayout breadcrumbs={breadcrumbs}>
-      <Head title="Nuevo Tipo de Maquina" />
+      <Head title="Nuevo Motivo" />
       <div className="flex h-full flex-1 flex-col gap-4 rounded-xl p-4">
-        <h1 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Registrar Tipo de Maquina</h1>
+        <h1 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Registrar Motivo</h1>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <Label>Nombre del tipo</Label>
+            <Label>Nombre del Motivo</Label>
             <input
               type="text"
               value={data.name}
@@ -43,8 +43,8 @@ export default function Create() {
             {errors.name && <p className="text-sm text-red-600">{errors.name}</p>}
           </div>
 
-          <Button type="submit" disabled={processing} className="w-auto hover:bg-blue-500">
-            Guardar Tipo
+          <Button type="submit" disabled={processing} className="w-auto cursor-pointer hover:bg-blue-500">
+            Guardar Motivo
           </Button>
         </form>
       </div>

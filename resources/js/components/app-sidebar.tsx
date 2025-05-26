@@ -46,7 +46,7 @@ const mainNavItems: NavItem[] = [
     },
     {
         title:'Asignaciones',
-        href:'/assignations',
+        href:'/assigments',
         icon: ClipboardList,
     }, {
         title:'Motivos de Finalizacion',

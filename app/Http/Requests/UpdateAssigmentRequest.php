@@ -11,7 +11,7 @@ class UpdateAssigmentRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,13 @@ class UpdateAssigmentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'start_date' => 'required|date',
+            'end_date' => 'required|date|after:start_date',
+            'mileage' => 'required|integer|min:1',
+            'reason_end_id' => 'required|exists:reason_ends,id',
+            'machine_id' => 'required|exists:machines,id',
+            'work_id' => 'required|exists:works,id',
+
         ];
     }
 }

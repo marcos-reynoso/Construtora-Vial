@@ -130,7 +130,7 @@ export default function Create({types=[], provinces=[], brands=[], maintenances=
             {errors.maintenance_id && <p className="text-sm text-red-600">{errors.maintenance_id}</p>}
           </div>
 
-          <Button type="submit" disabled={processing} className="w-auto  hover:bg-blue-500">
+          <Button type="submit" disabled={processing} className="w-auto cursor-pointer hover:bg-blue-500">
             Guardar Máquina
           </Button>
         </form>

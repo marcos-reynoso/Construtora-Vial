@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreMaintenanceRequest;
 use App\Http\Requests\UpdateMaintenanceRequest;
 use App\Models\Maintenance;
+use Inertia\Inertia;
 
 class MaintenanceController extends Controller
 {
@@ -13,7 +14,10 @@ class MaintenanceController extends Controller
      */
     public function index()
     {
-        //
+        $maintenances = Maintenance::all(['id', 'name', 'mileage_application']);
+        return Inertia::render('Maintenance/Index', [
+            'maintenances' => $maintenances
+        ]);
     }
 
     /**
@@ -21,7 +25,7 @@ class MaintenanceController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Maintenance/Create');
     }
 
     /**
@@ -29,7 +33,10 @@ class MaintenanceController extends Controller
      */
     public function store(StoreMaintenanceRequest $request)
     {
-        //
+        $validated = $request->validated();
+        Maintenance::create($validated);
+        return redirect()->route('maintenances.index')->with('message', 'Mantenimiento Creado con Exito');
+        return redirect()->back()->with('error', 'Error al Crear Mantenimiento');
     }
 
     /**
@@ -45,7 +52,9 @@ class MaintenanceController extends Controller
      */
     public function edit(Maintenance $maintenance)
     {
-        //
+        return Inertia::render('Maintenance/Edit', [
+            'maintenance' => $maintenance
+        ]);
     }
 
     /**
@@ -53,7 +62,10 @@ class MaintenanceController extends Controller
      */
     public function update(UpdateMaintenanceRequest $request, Maintenance $maintenance)
     {
-        //
+        $validated = $request->validated();
+        $maintenance->update($validated);
+        return redirect()->route('maintenances.index')->with('message', 'Mantenimiento Actualizado con Exito');
+        return redirect()->back()->with('error', 'Error al Actualizar Mantenimiento');
     }
 
     /**
@@ -61,6 +73,8 @@ class MaintenanceController extends Controller
      */
     public function destroy(Maintenance $maintenance)
     {
-        //
+        $maintenance->delete();
+        return redirect()->route('maintenances.index')->with('message', 'Mantenimiento Eliminado con Exito');
+        return redirect()->back()->with('error', 'Error al CEelinar Mantenimiento');
     }
 }

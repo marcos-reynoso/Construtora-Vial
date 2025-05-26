@@ -14,6 +14,21 @@ class ReasonEndSeeder extends Seeder
      */
     public function run(): void
     {
-        ReasonEnd::factory(4)->create();
+        $reasons = [
+            'Fase completa',
+            'Avería',
+            'Cancelada por el cliente',
+            'Condiciones climáticas adversas',
+            'Falta de materiales',
+            'En proceso',
+            'Avería técnica',
+            'Retrasos logísticos',
+            'Termino su parte del trabajo'
+
+        ];
+
+        foreach ($reasons as $reason) {
+            ReasonEnd::create(['name' => $reason]);
+        }
     }
 }

@@ -17,13 +17,12 @@ class Work extends Model
         'end_date',
         'province_id',
     ];
-    public function assigment(): BelongsTo
+    public function assigment(): HasMany
     {
-        return $this->belongsTo(Assigment::class);
+        return $this->hasMany(Assigment::class);
     }
-    public function province(): HasMany
+    public function province(): BelongsTo
     {
-
-        return $this->hasMany(Province::class);
+        return $this->belongsTo(Province::class);
     }
 }
