@@ -57,7 +57,7 @@ export default function Index() {
               {assigments.map((assigment:Assignment) => (
                 <TableRow key={assigment.id}>
                   <TableCell>{new Date(assigment.start_date).toLocaleDateString()}</TableCell>
-                  <TableCell>{new Date(assigment?.end_date).toLocaleDateString()}</TableCell>
+                 <TableCell>{assigment.end_date? new Date(assigment.end_date).toLocaleDateString() : ''}</TableCell>
                   <TableCell>{assigment.reasonend.name}</TableCell>
                   <TableCell>{assigment.mileage}</TableCell>
                   <TableCell>{assigment.machine.num_ser}</TableCell>
