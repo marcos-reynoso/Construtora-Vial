@@ -26,7 +26,18 @@ class MachineController extends Controller
             'machines' => $machines
         ]);
     }
+    public function search()
+    {
+        $machines = Machine::with([
+            'type',
+            'assigments.work',
+            'assigments.reasonend',
+        ])->get();
 
+        return Inertia::render('Search/Machine', [
+            'machines' => $machines,
+        ]);
+    }
     /**
      * Show the form for creating a new resource.
      */

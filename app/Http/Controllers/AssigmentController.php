@@ -28,8 +28,20 @@ class AssigmentController extends Controller
      */
     public function create()
     {
+   
+        $reasonsStillActive = ReasonEnd::whereIn('name', ['En Proceso', 'Avería técnica', 'Averia'])->pluck('id');
+
+      
+        $machinesInUse = Assigment::where(function ($query) use ($reasonsStillActive) {
+            $query->whereNull('end_date')
+                ->orWhereIn('reason_end_id', $reasonsStillActive);
+        })->pluck('machine_id');
+
+      
+        $availableMachines = Machine::whereNotIn('id', $machinesInUse)->get();
+
         return Inertia::render('Assigments/Create', [
-            'machines' => Machine::all(),
+            'machines' => $availableMachines,
             'works' => Work::all(),
             'reasonends' => ReasonEnd::all(),
         ]);

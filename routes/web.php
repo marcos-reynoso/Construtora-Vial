@@ -30,6 +30,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::put('/machines/{machine}', [MachineController::class, 'update'])->name('machines.update');
     Route::delete('/machines/{machine}', [MachineController::class, 'destroy'])->name('machines.destroy');
 
+    Route::get('/machines/search', [MachineController::class, 'search'])->name('machines.search');
     /* Types */
     Route::get('/types', [TypeController::class, 'index'])->name('types.index');
     Route::get('types/create', [TypeController::class, 'create'])->name('types.create');
