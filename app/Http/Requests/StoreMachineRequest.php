@@ -26,7 +26,7 @@ class StoreMachineRequest extends FormRequest
             'type_id' => 'required|exists:types,id',
             'province_id' => 'required|exists:provinces,id',
             'brand_id' => 'required|exists:brands,id',
-            'maintenance_id' => 'required|exists:maintenances,id',
+            'maintenance_id' => 'nullable|exists:maintenances,id',
         ];
     }
 }

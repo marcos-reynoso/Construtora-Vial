@@ -9,7 +9,7 @@ use App\Models\Machine;
 use App\Models\Maintenance;
 use App\Models\Province;
 use App\Models\Type;
-
+use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class MachineController extends Controller
@@ -26,17 +26,16 @@ class MachineController extends Controller
             'machines' => $machines
         ]);
     }
-    public function search()
+    public function search(Request $request)
     {
-        $machines = Machine::with([
-            'type',
-            'assigments.work',
-            'assigments.reasonend',
-        ])->get();
+        $query = $request->input('query');
 
-        return Inertia::render('Search/Machine', [
-            'machines' => $machines,
-        ]);
+        $machines = Machine::with(['type', 'assigments.work', 'assigments.reasonend'])
+            ->where('num_ser', 'like', "%{$query}%")
+            ->orWhereHas('type', fn($q) => $q->where('name', 'like', "%{$query}%"))
+            ->get();
+
+        return response()->json($machines);
     }
     /**
      * Show the form for creating a new resource.

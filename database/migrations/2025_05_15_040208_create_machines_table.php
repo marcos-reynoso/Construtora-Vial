@@ -24,7 +24,7 @@ return new class extends Migration
             $table->foreignIdFor(Type::class);
             $table->foreignIdFor(Brand::class);
             $table->foreignIdFor(Province::class);
-            $table->foreignIdFor(Maintenance::class);
+            $table->foreignIdFor(Maintenance::class)->nullable();
             $table->timestamps();
         });
     }

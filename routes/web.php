@@ -8,6 +8,7 @@ use App\Http\Controllers\ProvinceController;
 use App\Http\Controllers\ReasonEndController;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\WorkController;
+use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -22,6 +23,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     /*    Machines */
     Route::get('/machines', [MachineController::class, 'index'])->name('machines.index');
 
+    Route::get('/machines/search', [MachineController::class, 'search'])->name('machines.search');
     Route::get('/machines/create', [MachineController::class, 'create'])->name('machines.create');
 
     Route::post('/machines', [MachineController::class, 'store'])->name('machines.store');
@@ -30,7 +32,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::put('/machines/{machine}', [MachineController::class, 'update'])->name('machines.update');
     Route::delete('/machines/{machine}', [MachineController::class, 'destroy'])->name('machines.destroy');
 
-    Route::get('/machines/search', [MachineController::class, 'search'])->name('machines.search');
     /* Types */
     Route::get('/types', [TypeController::class, 'index'])->name('types.index');
     Route::get('types/create', [TypeController::class, 'create'])->name('types.create');
@@ -78,6 +79,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('assigments/{assigment}/edit', [AssigmentController::class, 'edit'])->name('assigments.edit');
     Route::put('/assigments/{assigment}', [AssigmentController::class, 'update'])->name('assigments.update');
     Route::delete('/assigments/{assigment}', [AssigmentController::class, 'destroy'])->name('assigments.destroy');
+
+    Route::get('/provinces/report/month', [ProvinceController::class, 'monthlyReport'])->name('provinces.report.month');
+    Route::get('provinces', [ProvinceController::class, 'index'])->name('provinces.index');
 });
 
 require __DIR__ . '/settings.php';

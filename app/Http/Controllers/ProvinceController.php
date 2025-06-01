@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreProvinceRequest;
 use App\Http\Requests\UpdateProvinceRequest;
 use App\Models\Province;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class ProvinceController extends Controller
@@ -19,7 +21,23 @@ class ProvinceController extends Controller
             'provinces' => $provinces
         ]);
     }
+    public function monthlyReport(Request $request)
+    {
+        $month = $request->input('month'); // formato: YYYY-MM
 
+        $provinces = Province::with(['works' => function ($q) use ($month) {
+            $q->whereMonth('start_date', substr($month, 5, 2))
+                ->whereYear('start_date', substr($month, 0, 4))
+                ->with(['assigment.machine.type']);
+        }])->get();
+
+        $pdf = Pdf::loadView('reports.province-month', [
+            'provinces' => $provinces,
+            'month' => $month,
+        ]);
+
+        return $pdf->stream('reporte_provincias_' . $month . '.pdf');
+    }
     /**
      * Show the form for creating a new resource.
      */

@@ -61,11 +61,11 @@ export default function Create({ provinces=[]}: Props) {
             <div>
                 <Label htmlFor="start_date">Fecha Inicio</Label>
                 <Input
-                id="start_date"
-                type="date"
-                value={data.start_date}
-                onChange={(e) => setData('start_date', e.target.value)}
-                className="mt-1"
+                  id="start_date"
+                  type="date"
+                  value={data.start_date}
+                  onChange={(e) => setData('start_date', e.target.value)}
+                  className="mt-1 "
                 />
                 {errors.start_date && <p className="text-sm text-red-600">{errors.start_date}</p>}
                 </div>
@@ -76,7 +76,7 @@ export default function Create({ provinces=[]}: Props) {
                 type="date"
                 value={data?.end_date}
                 onChange={(e) => setData('end_date', e.target.value)}
-                className="mt-1"
+                className="mt-1 "
                 />
                 {errors.start_date && <p className="text-sm text-red-600">{errors.start_date}</p>}
                 </div>

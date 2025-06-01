@@ -20,7 +20,7 @@ class Machine extends Model
         'maintenance_id',
 
     ];
-    public function assigment(): HasMany
+    public function assigments(): HasMany
     {
         return $this->hasMany(Assigment::class);
     }
