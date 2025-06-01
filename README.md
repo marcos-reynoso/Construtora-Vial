@@ -11,8 +11,6 @@ A management system for machinery, works, and PDF reporting for a construction c
 - Node.js >= 18.x and npm >= 9.x
 - MySQL or MariaDB
 - [Optional] XAMPP/LAMPP for local development
-- PHP extensions: `pdo`, `mbstring`, `openssl`, `tokenizer`, `xml`, `ctype`, `json`, `bcmath`, `gd`
-- [Optional] Git
 
 ---
 
